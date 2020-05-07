@@ -57,7 +57,13 @@ class Copia2 extends RealmRecyclerViewAdapter<Empleat, Copia2.MyViewHolder> {
         holder.empleat = obj;
         final int itemId = obj.getId();
         //noinspection ConstantConditions
-        holder.nom.setText(obj.getCountString());
+        holder.id.setText(obj.getId());
+        holder.nom.setText(obj.getNom());
+        holder.cognoms.setText(obj.getCognoms());
+        holder.categoria.setText(obj.getGetCategoria());
+        holder.edad.setText(obj.getEdad());
+        holder.antiguetat.setText(obj.getAntiguetat());
+
         //holder.deletedCheckBox.setChecked(countersToDelete.contains(itemId));
 //        if (inDeletionMode) {
 //            holder.deletedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
