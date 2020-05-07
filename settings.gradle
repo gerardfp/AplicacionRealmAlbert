@@ -1,0 +1,2 @@
+rootProject.name='AplicacionRealm'
+include ':app'

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".HomeFragment">
+
+    <TextView
+        android:id="@+id/titol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Realm - Pràctica"
+        android:textSize="25dp"
+        android:textFontWeight="@android:integer/config_longAnimTime"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/insertarText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="Insertar "
+        android:textSize="18dp"
+        android:background="@color/colorAccent"
+        app:layout_constraintTop_toBottomOf="@+id/titol" />
+
+    <Button
+        android:id="@+id/esborrarText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="Esborrar "
+        android:textSize="18dp"
+        android:background="@color/colorAccent"
+        app:layout_constraintTop_toBottomOf="@+id/insertarText" />
+
+    <Button
+        android:id="@+id/eliminarText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="Eliminar "
+        android:textSize="18dp"
+        android:background="@color/colorAccent"
+        app:layout_constraintTop_toBottomOf="@+id/esborrarText" />
+
+    <Button
+        android:id="@+id/modificarText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="Modificar "
+        android:textSize="18dp"
+        android:background="@color/colorAccent"
+        app:layout_constraintTop_toBottomOf="@+id/eliminarText" />
+    <Button
+        android:id="@+id/visualitzarText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="Visualitzar dades "
+        android:textSize="18dp"
+        android:background="@color/colorAccent"
+        app:layout_constraintTop_toBottomOf="@+id/modificarText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
