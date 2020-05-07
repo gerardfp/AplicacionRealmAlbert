@@ -30,14 +30,10 @@
         android:name="com.example.aplicacionrealm.ModificarFragment"
         android:label="               Pràtica amb Realm"
         tools:layout="@layout/fragment_modificar" />
-    <fragment
-        android:id="@+id/visualitzarFragment"
-        android:name="com.example.aplicacionrealm.VisualitzarFragment"
-        android:label="               Pràtica amb Realm"
-        tools:layout="@layout/viewholder_empleats" />
+
     <fragment
         android:id="@+id/empleat_List_Fragment"
-        android:name="com.example.aplicacionrealm.Empleat_List_Fragment"
+        android:name="com.example.aplicacionrealm.copiaSeguretat"
         android:label="fragment_empleat__list_"
         tools:layout="@layout/fragment_empleat_list" />
 </navigation>
