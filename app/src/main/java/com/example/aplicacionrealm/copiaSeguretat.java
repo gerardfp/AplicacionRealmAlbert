@@ -45,17 +45,17 @@ public class copiaSeguretat extends MyFragment {
         super.onViewCreated(view, savedInstanceState);
 
         RecyclerView empleatsRecyclerView = view.findViewById(R.id.itemList);
-
-        empleatsRecyclerView.setAdapter(new EmpleatAdapter());
+        realm = Realm.getDefaultInstance();
+        RealmResults<Empleat> listEmpleat = realm.where(Empleat.class)
+                .sort("id")
+                .findAllAsync();
+        empleatsRecyclerView.setAdapter(new EmpleatAdapter(listEmpleat, false));
     }
 
     public class EmpleatAdapter extends RealmRecyclerViewAdapter<Empleat, EmpleatAdapter.MyViewHolder> {
-
-        public EmpleatAdapter(OrderedRealmCollection<Empleat> data) {
-            super(data, true);
-
+        public EmpleatAdapter(@Nullable OrderedRealmCollection<Empleat> data, boolean autoUpdate) {
+            super(data, autoUpdate);
         }
-
         @NonNull
         @Override
         public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -65,7 +65,6 @@ public class copiaSeguretat extends MyFragment {
         @Override
         public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-            realm = Realm.getDefaultInstance();
             RealmResults<Empleat> listEmpleat = realm.where(Empleat.class)
                     .sort("id")
                     .findAllAsync();
