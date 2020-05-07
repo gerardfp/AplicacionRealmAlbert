@@ -51,8 +51,8 @@ public class Empleat_List_Fragment extends RealmBaseAdapter<Empleat> implements 
 
 
     @Override
-    public View getView(int position, final View convertView, ViewGroup parent) {
-        MyViewHolder viewHolder  = new MyViewHolder(convertView);;
+    public View getView(int position, final View view, ViewGroup parent) {
+        MyViewHolder viewHolder  = new MyViewHolder(view);;
         realm = Realm.getDefaultInstance();
         RealmResults<Empleat> listEmpleat = realm.where(Empleat.class)
                 .sort("id")
@@ -65,7 +65,7 @@ public class Empleat_List_Fragment extends RealmBaseAdapter<Empleat> implements 
         viewHolder.edad.setText(listEmpleat.get(position).getEdad());
         viewHolder.antiguetat.setText(listEmpleat.get(position).getAntiguetat());
 
-        return convertView;
+        return view;
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
