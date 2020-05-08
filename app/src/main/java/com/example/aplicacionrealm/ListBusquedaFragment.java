@@ -55,6 +55,7 @@ public class ListBusquedaFragment extends MyFragment {
             }
         });
         System.out.println("dades a buscar list Busqueda... .................................   "+ dadeAbuscar);
+
         RealmResults<Empleat> resultat = realm.where(Empleat.class)
                 .equalTo("nom", dadeAbuscar)
                 .findAll();

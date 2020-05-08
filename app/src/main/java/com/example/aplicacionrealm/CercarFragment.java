@@ -64,22 +64,22 @@ public class CercarFragment extends MyFragment {
 
                 if (TextUtils.isEmpty(id.getText().toString())){
                     System.out.println("....................vacio campo");
-//            if (TextUtils.isEmpty(nom.getText().toString())){
-//                System.out.println(".....................dos");
-//                if (TextUtils.isEmpty(cognoms.getText().toString())){
-//                    System.out.println("......................tres");
-//                    if (TextUtils.isEmpty(categoria.getText().toString())){
-//                        System.out.println("..............................cuatro");
-//                        if (TextUtils.isEmpty(edad.getText().toString())){
-//                            System.out.println("..........................cinco");
-//                            if (TextUtils.isEmpty(antiguetat.getText().toString())){
-//                                System.out.println("..........................seis");
-//                                id.setError("Introueix alguna dada");
-//                            }else appViewModel.dato.setValue(antiguetat.getText().toString());
-//                        }else appViewModel.dato.setValue(edad.getText().toString());
-//                    }else appViewModel.dato.setValue(categoria.getText().toString());
-//                }else appViewModel.dato.setValue(cognoms.getText().toString());
-//            }else appViewModel.dato.setValue(nom.getText().toString());
+                    if (TextUtils.isEmpty(nom.getText().toString())){
+                        System.out.println(".....................dos");
+                        if (TextUtils.isEmpty(cognoms.getText().toString())){
+                            System.out.println("......................tres");
+                            if (TextUtils.isEmpty(categoria.getText().toString())){
+                                System.out.println("..............................cuatro");
+                                if (TextUtils.isEmpty(edad.getText().toString())){
+                                    System.out.println("..........................cinco");
+                                    if (TextUtils.isEmpty(antiguetat.getText().toString())){
+                                        System.out.println("..........................seis");
+                                        id.setError("Introueix alguna dada");
+                                    }else appViewModel.dato.setValue(antiguetat.getText().toString());
+                                }else appViewModel.dato.setValue(edad.getText().toString());
+                            }else appViewModel.dato.setValue(categoria.getText().toString());
+                        }else appViewModel.dato.setValue(cognoms.getText().toString());
+                    }else appViewModel.dato.setValue(nom.getText().toString());
                 }else appViewModel.dato.setValue(id.getText().toString());
 
 
