@@ -8,32 +8,24 @@
     <fragment
         android:id="@+id/insertarFragment"
         android:name="com.example.aplicacionrealm.InsertarFragment"
-        android:label="               Pràtica amb Realm"
+        android:label="               Pràctica amb Realm"
         tools:layout="@layout/fragment_insertar" />
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.aplicacionrealm.HomeFragment"
-        android:label="               Pràtica amb Realm"
+        android:label="               Pràctica amb Realm"
         tools:layout="@layout/fragment_home" />
-    <fragment
-        android:id="@+id/esborrarFragment"
-        android:name="com.example.aplicacionrealm.EsborrarFragment"
-        android:label="               Pràtica amb Realm"
-        tools:layout="@layout/fragment_esborrar" />
-    <fragment
-        android:id="@+id/eliminarFragment"
-        android:name="com.example.aplicacionrealm.EliminarFragment"
-        android:label="               Pràtica amb Realm"
-        tools:layout="@layout/fragment_eliminar" />
+
+
     <fragment
         android:id="@+id/modificarFragment"
         android:name="com.example.aplicacionrealm.ModificarFragment"
-        android:label="               Pràtica amb Realm"
+        android:label="               Pràctica amb Realm"
         tools:layout="@layout/fragment_modificar" />
 
     <fragment
         android:id="@+id/empleat_List_Fragment"
-        android:name="com.example.aplicacionrealm.copiaSeguretat"
-        android:label="fragment_empleat__list_"
+        android:name="com.example.aplicacionrealm.Empleat_List_Fragment"
+        android:label="               Pràctica amb Realm"
         tools:layout="@layout/fragment_empleat_list" />
 </navigation>

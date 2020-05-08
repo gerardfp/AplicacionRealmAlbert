@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 
 import android.text.TextUtils;
 import android.view.Gravity;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.aplicacionrealm.Model.Empleat;
@@ -25,6 +27,9 @@ public class InsertarFragment extends MyFragment {
 
     private EditText idEditText, nomEditText, cognomsEditText, categoriaEditText, edadEditText, antiguetatEditText;
     private Button btnInsertar;
+    TextView titol;
+    private int idSelecion;
+    private boolean modificar ;
     public InsertarFragment() {
         // Required empty public constructor
     }
@@ -38,9 +43,9 @@ public class InsertarFragment extends MyFragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        titol = view.findViewById(R.id.titleText);
         idEditText = view.findViewById(R.id.idEditText);
         nomEditText = view.findViewById(R.id.nomEditText);
         cognomsEditText = view.findViewById(R.id.cognomsEditText);
@@ -48,13 +53,28 @@ public class InsertarFragment extends MyFragment {
         edadEditText = view.findViewById(R.id.edadEditText);
         antiguetatEditText = view.findViewById(R.id.antiguetatEditText);
         btnInsertar = view.findViewById(R.id.btnInsertar);
+        appViewModel.idSeleccion.observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer id) {
+                idSelecion = id;
+            }
+        });
+        appViewModel.modificar.observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean b) {
+                if (b) {
+                    idEditText.setVisibility(EditText.INVISIBLE);
+                    btnInsertar.setText("Modificar");
+                    titol.setText("Modificar dades");
+                }
+                modificar = b;
+            }
+        });
 
         btnInsertar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-                if (!validateForm()){
+                if (!validateForm(modificar)){
                     Toast toast1 =
                             Toast.makeText(requireActivity(),
                                     "Faltan datos por introducir !", Toast.LENGTH_SHORT);
@@ -62,19 +82,18 @@ public class InsertarFragment extends MyFragment {
                     toast1.show();
                     return;
                 }
+                writerDades(modificar, idSelecion);
 
-                writerDades();
-                System.out.println(" empleat registart: .............................................................");
                 navController.navigate(R.id.homeFragment);
             }
         });
-        System.out.println("dades inseridas ....................................sssssssssssssssssssss..................");
+
     }
 
-    private void writerDades() {
+    private void writerDades(boolean modificar, int idSelecion) {
         empleat = new Empleat();
-
-        empleat.setId(Integer.parseInt(idEditText.getText().toString()));
+        if (modificar ) empleat.setId(idSelecion);
+        else empleat.setId(Integer.parseInt(idEditText.getText().toString()));
         empleat.setNom(nomEditText.getText().toString());
         empleat.setCognoms(cognomsEditText.getText().toString());
         empleat.setGetCategoria(categoriaEditText.getText().toString());
@@ -85,14 +104,13 @@ public class InsertarFragment extends MyFragment {
         ;
         Empleat registrarEmpleat = realm.copyToRealmOrUpdate(empleat);
         realm.commitTransaction();
-        System.out.println("ssssssssssssss...................... " + registrarEmpleat.toString());
     }
 
-    private boolean validateForm() {
+    private boolean validateForm(boolean modificar) {
         boolean valid = true;
 
         String id = idEditText.getText().toString();
-        if (TextUtils.isEmpty(id)) {
+        if (TextUtils.isEmpty(id) && !modificar) {
             idEditText.setError("Required.");
             valid = false;
         }
@@ -112,14 +130,29 @@ public class InsertarFragment extends MyFragment {
             valid = false;
         }
         String edad = edadEditText.getText().toString();
-        if (TextUtils.isEmpty(edad)) {
+        if (TextUtils.isEmpty(edad) ) {
             edadEditText.setError("Required.");
             valid = false;
+        }else{
+            try{
+                int num = Integer.parseInt(edad);
+            }catch (Exception e){
+                edadEditText.setError("Solo números");
+                valid = false;
+            }
         }
+
         String antiguetat = antiguetatEditText.getText().toString();
         if (TextUtils.isEmpty(antiguetat)) {
             antiguetatEditText.setError("Required.");
             valid = false;
+        }else{
+            try{
+                int num = Integer.parseInt(antiguetat);
+            }catch (Exception e){
+                edadEditText.setError("Solo números");
+                valid = false;
+            }
         }
         return valid;
     }

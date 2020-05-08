@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blancbrut"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeFragment">
 
@@ -29,35 +30,7 @@
         android:background="@color/colorAccent"
         app:layout_constraintTop_toBottomOf="@+id/titol" />
 
-    <Button
-        android:id="@+id/esborrarText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:text="Esborrar "
-        android:textSize="18dp"
-        android:background="@color/colorAccent"
-        app:layout_constraintTop_toBottomOf="@+id/insertarText" />
 
-    <Button
-        android:id="@+id/eliminarText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:text="Eliminar "
-        android:textSize="18dp"
-        android:background="@color/colorAccent"
-        app:layout_constraintTop_toBottomOf="@+id/esborrarText" />
-
-    <Button
-        android:id="@+id/modificarText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:text="Modificar "
-        android:textSize="18dp"
-        android:background="@color/colorAccent"
-        app:layout_constraintTop_toBottomOf="@+id/eliminarText" />
     <Button
         android:id="@+id/visualitzarText"
         android:layout_width="match_parent"
@@ -66,6 +39,6 @@
         android:text="Visualitzar dades "
         android:textSize="18dp"
         android:background="@color/colorAccent"
-        app:layout_constraintTop_toBottomOf="@+id/modificarText" />
+        app:layout_constraintTop_toBottomOf="@+id/insertarText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

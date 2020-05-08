@@ -14,6 +14,8 @@
         android:layout_marginStart="90dp"
         android:layout_marginTop="60dp"
         android:text="Insertar dades"
+        android:textSize="22dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

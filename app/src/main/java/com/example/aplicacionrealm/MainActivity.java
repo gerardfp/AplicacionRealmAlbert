@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.homeFragment, R.id.insertarFragment, R.id.eliminarFragment, R.id.esborrarFragment,
+                R.id.homeFragment, R.id.insertarFragment, R.id.empleat_List_Fragment,
                 R.id.modificarFragment)
                 .build();
 

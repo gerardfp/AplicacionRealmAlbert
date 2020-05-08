@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="colorGroc">#AEC0A8</color>
-
+    <color name="colorPrimaryfluix">#9756f5</color>
     <color name="White">#FFF</color>
     <color name="Raro">#EBE9E4</color>
     <color name="Blau">#4477BB</color>
@@ -15,5 +15,6 @@
     <color name="colorfondowhite">#FFF</color>
     <color name="colorfondogris">#018C89</color>
     <color name="colorHint">#c3acacac</color>
+    <color name="blancbrut">#f7f7f7</color>
 
 </resources>
