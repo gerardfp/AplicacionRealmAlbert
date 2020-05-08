@@ -18,7 +18,7 @@ import android.widget.Button;
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends MyFragment {
-    private Button insertar, eliminar, modificar, visualitzar;
+    private Button insertar, cercar, visualitzar;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -38,13 +38,19 @@ public class HomeFragment extends MyFragment {
 
 
         insertar = view.findViewById(R.id.insertarText);
-
+        cercar = view.findViewById(R.id.cercarText);
         visualitzar = view.findViewById(R.id.visualitzarText);
 
         insertar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 navController.navigate(R.id.insertarFragment);
+            }
+        });
+        cercar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.cercarFragment);
             }
         });
         visualitzar.setOnClickListener(new View.OnClickListener() {

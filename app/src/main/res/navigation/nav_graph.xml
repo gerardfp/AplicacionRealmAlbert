@@ -28,4 +28,16 @@
         android:name="com.example.aplicacionrealm.Empleat_List_Fragment"
         android:label="               Pràctica amb Realm"
         tools:layout="@layout/fragment_empleat_list" />
+    <fragment
+        android:id="@+id/cercarFragment"
+        android:name="com.example.aplicacionrealm.CercarFragment"
+        android:label="               Pràctica amb Realm"
+        tools:layout="@layout/fragment_cercar" />
+    <fragment
+        android:id="@+id/listBusquedaFragment"
+        android:name="com.example.aplicacionrealm.ListBusquedaFragment"
+        android:label="fragment_list_busqueda"
+        tools:layout="@layout/fragment_list_busqueda" />
+   
+
 </navigation>

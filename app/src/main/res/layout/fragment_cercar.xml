@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CercarFragment">
+
+    <TextView
+        android:id="@+id/titolCerca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="60dp"
+        android:text="Insertar dades"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/idCerca"
+        android:layout_width="290dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="34dp"
+        android:background="@color/White"
+        android:hint="id"
+        android:padding="5dp"
+        android:textColor="@color/Negre"
+        android:textColorHint="@color/colorHint"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titolCerca">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/nomCerca"
+        android:layout_width="290dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/White"
+        android:hint="Nom"
+        android:padding="5dp"
+        android:textColor="@color/Negre"
+        android:textColorHint="@color/colorHint"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idCerca">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/cognomsCerca"
+        android:layout_width="290dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/White"
+        android:hint="cognoms"
+        android:padding="5dp"
+        android:textColor="@color/Negre"
+        android:textColorHint="@color/colorHint"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nomCerca">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/categoriaCerca"
+        android:layout_width="290dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/White"
+        android:hint="categoria"
+        android:padding="5dp"
+        android:textColor="@color/Negre"
+        android:textColorHint="@color/colorHint"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cognomsCerca">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/edadCerca"
+        android:layout_width="290dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/White"
+        android:hint="edad"
+        android:padding="5dp"
+        android:textColor="@color/Negre"
+        android:textColorHint="@color/colorHint"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categoriaCerca">
+
+    </EditText>
+    <EditText
+        android:id="@+id/antiguetatCerca"
+        android:layout_width="290dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/White"
+        android:hint="antiguetat"
+        android:padding="5dp"
+        android:textColor="@color/Negre"
+        android:textColorHint="@color/colorHint"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edadCerca">
+
+    </EditText>
+    <Button
+        android:id="@+id/btnCerca"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Buscar dades"
+        android:textSize="22dp"
+        android:background="@color/colorAccent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/antiguetatCerca"
+        android:layout_marginBottom="60dp">
+
+    </Button>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
