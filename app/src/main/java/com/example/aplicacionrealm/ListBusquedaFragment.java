@@ -30,9 +30,6 @@ public class ListBusquedaFragment extends MyFragment {
         // Required empty public constructor
     }
 
-    String camp = "";
-    private String dato, campBusqueda;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -64,12 +61,19 @@ public class ListBusquedaFragment extends MyFragment {
                             .equalTo(busqueda[1], busqueda[0])
                             .findAll();
                 }
-
+                if (resultat.isEmpty()){
+                    new AlertDialog.Builder(requireContext()).setTitle("\t\tNo hi ha dades")
+                            .setMessage("\t      ")
+                            .setMessage("\t      ")
+                            .setCancelable(true)
+                            .create()
+                            .show();
+                }
                 empleatsRecyclerView.setAdapter(new ListarAdapter(resultat, true));
             }
         });
     }
-
+// ADAPTER
     public class ListarAdapter extends RealmRecyclerViewAdapter<Empleat, ListarAdapter.MyHolder> {
 
         public ListarAdapter(@Nullable OrderedRealmCollection<Empleat> data, boolean autoUpdate) {
@@ -94,7 +98,6 @@ public class ListBusquedaFragment extends MyFragment {
             holder.btnEliminar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     eliminarDades(position);
                     new AlertDialog.Builder(requireContext()).setTitle("\t\tEl·liminat")
                             .setMessage("\t      ")
@@ -110,7 +113,6 @@ public class ListBusquedaFragment extends MyFragment {
                 public void onClick(View v) {
                     appViewModel.idSeleccion.postValue(getData().get(position).getId());
                     appViewModel.modificar.setValue(true);
-                    System.out.println("aquii mas lejos -..........................................................  " + appViewModel.modificar.getValue().toString());
                     navController.navigate(R.id.insertarFragment);
                 }
             });

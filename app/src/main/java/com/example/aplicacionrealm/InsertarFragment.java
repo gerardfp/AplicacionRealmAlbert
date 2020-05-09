@@ -83,7 +83,6 @@ public class InsertarFragment extends MyFragment {
                     return;
                 }
                 writerDades(modificar, idSelecion);
-                System.out.println("..........................modificar ........................" + modificar);
                 navController.navigate(R.id.homeFragment);
             }
         });
@@ -149,7 +148,7 @@ public class InsertarFragment extends MyFragment {
             try{
                 int num = Integer.parseInt(antiguetat);
             }catch (Exception e){
-                edadEditText.setError("Solo números");
+                antiguetatEditText.setError("Solo números");
                 valid = false;
             }
         }
