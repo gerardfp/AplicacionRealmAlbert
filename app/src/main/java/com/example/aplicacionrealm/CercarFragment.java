@@ -5,6 +5,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Transformations;
 
 import android.text.TextUtils;
 import android.view.Gravity;
@@ -14,6 +17,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.aplicacionrealm.Model.Empleat;
+
+import java.util.function.Function;
+
+import io.realm.Realm;
+import io.realm.RealmQuery;
+import io.realm.RealmResults;
 
 
 /**
@@ -59,44 +70,19 @@ public class CercarFragment extends MyFragment {
                     toast1.show();
                     return;
                 }
-                // Aqui solo recoge un valor de un campo
-                if (TextUtils.isEmpty(idText.getText().toString())) {
-                    if (TextUtils.isEmpty(nomText.getText().toString())) {
-                        if (TextUtils.isEmpty(cognomsText.getText().toString())) {
-                            if (TextUtils.isEmpty(categoriaText.getText().toString())) {
-                                if (TextUtils.isEmpty(edadText.getText().toString())) {
-                                    if (TextUtils.isEmpty(antiguetatText.getText().toString())) {
-                                        idText.setError("Introueix alguna dada");
-                                    } else {
-                                        busqueda[0] = antiguetatText.getText().toString();
-                                        busqueda[1] = "antiguetat";
-                                    }
-                                } else {
-                                    busqueda[0] = edadText.getText().toString();
-                                    busqueda[1] = "edad";
-                                }
-                            } else {
-                                busqueda[0] = categoriaText.getText().toString();
-                                busqueda[1] = "getCategoria";
-                            }
-                        } else {
-                            busqueda[0] = cognomsText.getText().toString();
-                            busqueda[1] = "cognoms";
-                        }
-                    } else {
-                        busqueda[0] = nomText.getText().toString();
-                        busqueda[1] = "nom";
-                    }
-                } else {
-                    busqueda[0] = idText.getText().toString();
-                    busqueda[1] = "id";
-                }
 
-                appViewModel.busqueda.setValue(busqueda);
-                navController.navigate(R.id.listBusquedaFragment);
+                appViewModel.empleatABuscar.setValue(new Empleat(
+                        idText.getText().toString().isEmpty() ? -1 : Integer.parseInt(idText.getText().toString()),
+                        nomText.getText().toString(),
+                        cognomsText.getText().toString(),
+                        categoriaText.getText().toString(),
+                        edadText.getText().toString().isEmpty() ? -1 : Integer.parseInt(edadText.getText().toString()),
+                        antiguetatText.getText().toString().isEmpty() ? -1 : Integer.parseInt(antiguetatText.getText().toString())
+                        ));
             }
         });
     }
+
 // Validar que només entris una dade i els camps numèrics siguin números
     private boolean validateForm() {
         boolean valid = true;
@@ -141,3 +127,40 @@ public class CercarFragment extends MyFragment {
         else return valid;
     }
 }
+
+
+// Aqui solo recoge un valor de un campo
+//                if (TextUtils.isEmpty(idText.getText().toString())) {
+//                    if (TextUtils.isEmpty(nomText.getText().toString())) {
+//                        if (TextUtils.isEmpty(cognomsText.getText().toString())) {
+//                            if (TextUtils.isEmpty(categoriaText.getText().toString())) {
+//                                if (TextUtils.isEmpty(edadText.getText().toString())) {
+//                                    if (TextUtils.isEmpty(antiguetatText.getText().toString())) {
+//                                        idText.setError("Introueix alguna dada");
+//                                    } else {
+//                                        busqueda[0] = antiguetatText.getText().toString();
+//                                        busqueda[1] = "antiguetat";
+//                                    }
+//                                } else {
+//                                    busqueda[0] = edadText.getText().toString();
+//                                    busqueda[1] = "edad";
+//                                }
+//                            } else {
+//                                busqueda[0] = categoriaText.getText().toString();
+//                                busqueda[1] = "getCategoria";
+//                            }
+//                        } else {
+//                            busqueda[0] = cognomsText.getText().toString();
+//                            busqueda[1] = "cognoms";
+//                        }
+//                    } else {
+//                        busqueda[0] = nomText.getText().toString();
+//                        busqueda[1] = "nom";
+//                    }
+//                } else {
+//                    busqueda[0] = idText.getText().toString();
+//                    busqueda[1] = "id";
+//                }
+
+//                appViewModel.busqueda.setValue(busqueda);
+//                navController.navigate(R.id.listBusquedaFragment);
