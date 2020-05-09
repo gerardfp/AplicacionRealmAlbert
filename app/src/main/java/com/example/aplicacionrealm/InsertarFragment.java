@@ -19,6 +19,8 @@ import android.widget.Toast;
 
 import com.example.aplicacionrealm.Model.Empleat;
 
+import io.realm.RealmResults;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -82,20 +84,39 @@ public class InsertarFragment extends MyFragment {
                     toast1.show();
                     return;
                 }
-                writerDades(modificar, idSelecion);
-                navController.navigate(R.id.homeFragment);
+                if ( verificarExistencia(Integer.parseInt(idEditText.getText().toString()))){
+                    Toast toast1 =
+                            Toast.makeText(requireActivity(),
+                                    "El id introduit ja existeix !", Toast.LENGTH_SHORT);
+                    toast1.setGravity(Gravity.CENTER | Gravity.LEFT, 250, 0);
+                    toast1.show();
+                    return;
+                }else{
+                    writerDades(modificar, idSelecion);
+                    navController.navigate(R.id.homeFragment);
+                }
+
             }
         });
 
     }
+    boolean verificarExistencia(int idSelecion){
 
+        RealmResults<Empleat> resultat = realm.where(Empleat.class)
+                .equalTo("id", idSelecion)
+                .findAll();
+
+        if (resultat.isEmpty()) return false;
+        else return true;
+
+    }
     private void writerDades(boolean modificar, int idSelecion) {
         empleat = new Empleat();
         if (modificar ) empleat.setId(idSelecion);
         else empleat.setId(Integer.parseInt(idEditText.getText().toString()));
         empleat.setNom(nomEditText.getText().toString());
         empleat.setCognoms(cognomsEditText.getText().toString());
-        empleat.setGetCategoria(categoriaEditText.getText().toString());
+        empleat.setCategoria(categoriaEditText.getText().toString());
         empleat.setEdad(Integer.parseInt(edadEditText.getText().toString()));
         empleat.setAntiguetat(Integer.parseInt(antiguetatEditText.getText().toString()));
 

@@ -2,7 +2,6 @@ package com.example.aplicacionrealm;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +19,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import io.realm.OrderedRealmCollection;
-import io.realm.Realm;
 import io.realm.RealmRecyclerViewAdapter;
 import io.realm.RealmResults;
 
@@ -73,7 +71,7 @@ public class Empleat_List_Fragment extends MyFragment {
             holder.id.setText(String.valueOf(getData().get(position).getId()));
             holder.nom.setText(getData().get(position).getNom());
             holder.cognoms.setText(getData().get(position).getCognoms());
-            holder.categoria.setText(getData().get(position).getGetCategoria());
+            holder.categoria.setText(getData().get(position).getCategoria());
             holder.edad.setText(String.valueOf(getData().get(position).getEdad()));
             holder.antiguetat.setText(String.valueOf(getData().get(position).getAntiguetat()));
 

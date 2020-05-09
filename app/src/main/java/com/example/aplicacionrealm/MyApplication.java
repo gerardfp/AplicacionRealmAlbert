@@ -15,6 +15,7 @@ public class MyApplication extends Application {
         RealmConfiguration config = new RealmConfiguration.Builder()
                 .name("bbdd_Primera.realm")
                 .schemaVersion(0)
+                .deleteRealmIfMigrationNeeded()
                 .build();
         Realm.setDefaultConfiguration(config);
     }

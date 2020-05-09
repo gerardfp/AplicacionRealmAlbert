@@ -91,7 +91,7 @@ public class ListBusquedaFragment extends MyFragment {
             holder.id.setText(String.valueOf(getData().get(position).getId()));
             holder.nom.setText(getData().get(position).getNom());
             holder.cognoms.setText(getData().get(position).getCognoms());
-            holder.categoria.setText(getData().get(position).getGetCategoria());
+            holder.categoria.setText(getData().get(position).getCategoria());
             holder.edad.setText(String.valueOf(getData().get(position).getEdad()));
             holder.antiguetat.setText(String.valueOf(getData().get(position).getAntiguetat()));
 

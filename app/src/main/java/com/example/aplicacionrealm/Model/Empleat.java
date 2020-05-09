@@ -9,7 +9,7 @@ public class Empleat extends RealmObject {
     @PrimaryKey
     private int id;
     @Index
-    private String cognoms, getCategoria, nom;
+    private String cognoms, categoria, nom;
     private int edad, antiguetat;
 
     public String getCountString() {
@@ -32,12 +32,12 @@ public class Empleat extends RealmObject {
         this.cognoms = cognoms;
     }
 
-    public String getGetCategoria() {
-        return getCategoria;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setGetCategoria(String getCategoria) {
-        this.getCategoria = getCategoria;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public String getNom() {
