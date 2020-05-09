@@ -84,7 +84,7 @@ public class InsertarFragment extends MyFragment {
                     toast1.show();
                     return;
                 }
-                if ( verificarExistencia(Integer.parseInt(idEditText.getText().toString()))){
+                if ( ! modificar && verificarExistencia(Integer.parseInt(idEditText.getText().toString()))){
                     Toast toast1 =
                             Toast.makeText(requireActivity(),
                                     "El id introduit ja existeix !", Toast.LENGTH_SHORT);

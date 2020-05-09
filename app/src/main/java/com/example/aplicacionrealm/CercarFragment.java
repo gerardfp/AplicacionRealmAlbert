@@ -8,12 +8,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.aplicacionrealm.Model.Empleat;
 
@@ -54,7 +56,14 @@ public class CercarFragment extends MyFragment {
         btCercar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (!validateForm()){
+                    Toast toast1 =
+                            Toast.makeText(requireActivity(),
+                                    "Faltan datos por introducir !", Toast.LENGTH_SHORT);
+                    toast1.setGravity(Gravity.CENTER | Gravity.LEFT, 250, 0);
+                    toast1.show();
+                    return;
+                }
                 // el -1 significa que no se desea buscar por ese campo
                 appViewModel.empleatABuscar.setValue(new Empleat(
                         id.getText().toString().isEmpty() ? -1 : Integer.parseInt(id.getText().toString()),
@@ -67,5 +76,38 @@ public class CercarFragment extends MyFragment {
                 navController.navigate(R.id.listBusquedaFragment);
             }
         });
+    }
+    private boolean validateForm() {
+        boolean valid = true;
+
+        String idt = id.getText().toString();
+        if (!TextUtils.isEmpty(idt) ) {
+            try{
+                int num = Integer.parseInt(idt);
+            }catch (Exception e){
+                edad.setError("Solo números");
+                valid = false;
+            }
+        }
+
+        String edadt = edad.getText().toString();
+        if (!TextUtils.isEmpty(edadt) ) {
+            try{
+                int num = Integer.parseInt(edadt);
+            }catch (Exception e){
+                edad.setError("Solo números");
+                valid = false;
+            }
+        }
+        String antiguetatt = antiguetat.getText().toString();
+        if (!TextUtils.isEmpty(antiguetatt)) {
+            try{
+                int num = Integer.parseInt(antiguetatt);
+            }catch (Exception e){
+                antiguetat.setError("Solo números");
+                valid = false;
+            }
+        }
+        return valid;
     }
 }
