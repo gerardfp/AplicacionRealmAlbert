@@ -56,6 +56,7 @@ public class ListBusquedaFragment extends MyFragment {
         });
 
 
+
 /**
  * Aqui en este Observer el dato llega en forma de String, pero si el campo es Integer daba problemas
  * Entonces con un TRY/CATCH he diferenciado si el dato de entrada era String o Integer.

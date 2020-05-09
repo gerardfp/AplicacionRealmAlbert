@@ -6,11 +6,24 @@ import io.realm.annotations.PrimaryKey;
 
 public class Empleat extends RealmObject {
 
+
     @PrimaryKey
     private int id;
     @Index
     private String cognoms, categoria, nom;
     private int edad, antiguetat;
+
+    public Empleat() {
+    }
+
+    public Empleat(int id, String cognoms, String categoria, String nom, int edad, int antiguetat) {
+        this.id = id;
+        this.cognoms = cognoms;
+        this.categoria = categoria;
+        this.nom = nom;
+        this.edad = edad;
+        this.antiguetat = antiguetat;
+    }
 
     public String getCountString() {
         return Integer.toString(id);

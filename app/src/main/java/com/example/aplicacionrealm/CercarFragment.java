@@ -63,9 +63,8 @@ public class CercarFragment extends MyFragment {
             @Override
             public void onClick(View v) {
                 if (!validateForm()) {
-                    Toast toast1 =
-                            Toast.makeText(requireActivity(),
-                                    "Només pots introudir un camp !", Toast.LENGTH_SHORT);
+                    Toast toast1 = Toast.makeText(requireActivity(),
+                            "Només pots introudir un camp !", Toast.LENGTH_SHORT);
                     toast1.setGravity(Gravity.CENTER | Gravity.LEFT, 250, 0);
                     toast1.show();
                     return;
@@ -79,6 +78,7 @@ public class CercarFragment extends MyFragment {
                         edadText.getText().toString().isEmpty() ? -1 : Integer.parseInt(edadText.getText().toString()),
                         antiguetatText.getText().toString().isEmpty() ? -1 : Integer.parseInt(antiguetatText.getText().toString())
                         ));
+                navController.navigate(R.id.listBusquedaFragment);
             }
         });
     }
@@ -87,25 +87,26 @@ public class CercarFragment extends MyFragment {
     private boolean validateForm() {
         boolean valid = true;
         int contador = 0;
+
         String id = idText.getText().toString();
         if (!TextUtils.isEmpty(id)) {
-            contador++;
+            contador ++;
         }
         String nom = nomText.getText().toString();
-        if (!TextUtils.isEmpty(nom)) {
-            contador++;
+        if (!nom.equals("")) {
+            contador ++;
         }
         String cognoms = cognomsText.getText().toString();
-        if (TextUtils.isEmpty(cognoms)) {
-            contador++;
+        if (!cognoms.equals("")) {
+            contador ++;
         }
         String categoria = categoriaText.getText().toString();
-        if (TextUtils.isEmpty(categoria)) {
-            contador++;
+        if (!categoria.equals("")) {
+            contador ++;
         }
         String edad = edadText.getText().toString();
         if (!TextUtils.isEmpty(edad)) {
-            contador++;
+            contador ++;
             try {
                 int num = Integer.parseInt(edad);
             } catch (Exception e) {
