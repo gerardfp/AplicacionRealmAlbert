@@ -29,7 +29,7 @@ import io.realm.RealmResults;
 public class CercarFragment extends MyFragment {
     Button  btCercar;
     EditText id, nom, cognoms, categoria, edad, antiguetat;
-    private String dato;
+    private String[] busqueda = new String[2];
     public CercarFragment() {
         // Required empty public constructor
     }
@@ -71,13 +71,31 @@ public class CercarFragment extends MyFragment {
                                     if (TextUtils.isEmpty(antiguetat.getText().toString())){
                                         System.out.println("..........................seis");
                                         id.setError("Introueix alguna dada");
-                                    }else appViewModel.dato.setValue(antiguetat.getText().toString());
-                                }else appViewModel.dato.setValue(edad.getText().toString());
-                            }else appViewModel.dato.setValue(categoria.getText().toString());
-                        }else appViewModel.dato.setValue(cognoms.getText().toString());
-                    }else appViewModel.dato.setValue(nom.getText().toString());
-                }else appViewModel.dato.setValue(id.getText().toString());
-
+                                    }else{
+                                        busqueda[0] = antiguetat.getText().toString();
+                                        busqueda[1] = "antiguetat";
+                                    }
+                                }else {
+                                    busqueda[0] = edad.getText().toString();
+                                    busqueda[1] = "edad";
+                                }
+                            }else {
+                                busqueda[0] = categoria.getText().toString();
+                                busqueda[1] = "categoria";
+                            }
+                        }else {
+                            busqueda[0] = cognoms.getText().toString();
+                            busqueda[1] = "cognoms";
+                        }
+                    }else {
+                        busqueda[0] = nom.getText().toString();
+                        busqueda[1] = "nom";
+                    }
+                }else {
+                    busqueda[0] = id.getText().toString();
+                    busqueda[1] = "id";
+                }
+                appViewModel.busqueda.setValue(busqueda);
                 navController.navigate(R.id.listBusquedaFragment);
             }
         });

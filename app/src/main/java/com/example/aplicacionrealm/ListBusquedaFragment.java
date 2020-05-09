@@ -29,8 +29,9 @@ public class ListBusquedaFragment extends MyFragment {
     public ListBusquedaFragment() {
         // Required empty public constructor
     }
-    String camp="";
-    private String dato, campBusqueda ;
+
+    String camp = "";
+    private String dato, campBusqueda;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,24 +45,16 @@ public class ListBusquedaFragment extends MyFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         final RecyclerView empleatsRecyclerView = view.findViewById(R.id.itemList2);
-        appViewModel.dato.observe(getViewLifecycleOwner(), new Observer<String>() {
+
+        appViewModel.busqueda.observe(getViewLifecycleOwner(), new Observer<String[]>() {
             @Override
-            public void onChanged(String s) {
-                dato = s;
+            public void onChanged(String[] busqueda) {
+                RealmResults<Empleat> resultat = realm.where(Empleat.class)
+                        .equalTo(busqueda[1], busqueda[0])
+                        .findAll();
+                empleatsRecyclerView.setAdapter(new ListarAdapter(resultat, true));
             }
         });
-        appViewModel.campBusqueda.observe(getViewLifecycleOwner(), new Observer<String>() {
-                    @Override
-                    public void onChanged(String camp) {
-                        campBusqueda = camp;
-                    }
-                });
-        //TODO campoBusqueda au no se le atribuye ningun valor en CercarFragment
-                System.out.println("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj  " + dato);
-        RealmResults<Empleat> resultat = realm.where(Empleat.class)
-                .equalTo(campBusqueda, dato)
-                .findAll();
-        empleatsRecyclerView.setAdapter(new ListarAdapter(resultat, true));
     }
 
     public class ListarAdapter extends RealmRecyclerViewAdapter<Empleat, ListarAdapter.MyHolder> {
