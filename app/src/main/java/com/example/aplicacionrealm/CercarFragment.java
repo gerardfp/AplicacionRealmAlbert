@@ -59,17 +59,11 @@ public class CercarFragment extends MyFragment {
             public void onClick(View v) {
 
                 if (TextUtils.isEmpty(id.getText().toString())){
-                    System.out.println("....................vacio campo");
                     if (TextUtils.isEmpty(nom.getText().toString())){
-                        System.out.println(".....................dos");
                         if (TextUtils.isEmpty(cognoms.getText().toString())){
-                            System.out.println("......................tres");
                             if (TextUtils.isEmpty(categoria.getText().toString())){
-                                System.out.println("..............................cuatro");
                                 if (TextUtils.isEmpty(edad.getText().toString())){
-                                    System.out.println("..........................cinco");
                                     if (TextUtils.isEmpty(antiguetat.getText().toString())){
-                                        System.out.println("..........................seis");
                                         id.setError("Introueix alguna dada");
                                     }else{
                                         busqueda[0] = antiguetat.getText().toString();

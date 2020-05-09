@@ -45,13 +45,26 @@ public class ListBusquedaFragment extends MyFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         final RecyclerView empleatsRecyclerView = view.findViewById(R.id.itemList2);
-
+/**
+ * Aqui en este Observer el dato llega en forma de String, pero si el campo es Integer daba problemas
+ * Entonces con un TRY/CATCH he diferenciado si el dato de entrada era String o Integer.
+ */
         appViewModel.busqueda.observe(getViewLifecycleOwner(), new Observer<String[]>() {
             @Override
             public void onChanged(String[] busqueda) {
-                RealmResults<Empleat> resultat = realm.where(Empleat.class)
-                        .equalTo(busqueda[1], busqueda[0])
-                        .findAll();
+                RealmResults<Empleat> resultat;
+                try{
+                    int numero = Integer.parseInt(busqueda[0]);
+                     resultat = realm.where(Empleat.class)
+                            .equalTo(busqueda[1], numero)
+                            .findAll();
+                }catch (Exception e){
+                    System.out.println("dade introduida un String");
+                     resultat = realm.where(Empleat.class)
+                            .equalTo(busqueda[1], busqueda[0])
+                            .findAll();
+                }
+
                 empleatsRecyclerView.setAdapter(new ListarAdapter(resultat, true));
             }
         });
