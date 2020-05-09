@@ -111,6 +111,21 @@ public class InsertarFragment extends MyFragment {
 
     }
     private void writerDades(boolean modificar, int idSelecion) {
+//        int id;
+//        if (modificar ) id = idSelecion;
+//        else id = Integer.parseInt(idEditText.getText().toString());
+//
+        // el -1 significa que no se desea buscar por ese campo
+//        appViewModel.insertarEmpleat.setValue(new Empleat(
+//                idEditText.getText().toString().isEmpty() ? -1 : Integer.parseInt(idEditText.getText().toString()),
+//                cognomsEditText.getText().toString(),
+//                categoriaEditText.getText().toString(),
+//                nomEditText.getText().toString(),
+//                edadEditText.getText().toString().isEmpty() ? -1 : Integer.parseInt(edadEditText.getText().toString()),
+//                antiguetatEditText.getText().toString().isEmpty() ? -1 : Integer.parseInt(antiguetatEditText.getText().toString())));
+
+
+
         empleat = new Empleat();
         if (modificar ) empleat.setId(idSelecion);
         else empleat.setId(Integer.parseInt(idEditText.getText().toString()));

@@ -43,8 +43,6 @@ public class ListBusquedaFragment extends MyFragment {
         super.onViewCreated(view, savedInstanceState);
         final RecyclerView empleatsRecyclerView = view.findViewById(R.id.itemList2);
 
-
-
         final ListarAdapter listarAdapter = new ListarAdapter(null, true);
         empleatsRecyclerView.setAdapter(listarAdapter);
 
@@ -52,42 +50,25 @@ public class ListBusquedaFragment extends MyFragment {
             @Override
             public void onChanged(RealmResults<Empleat> empleats) {
                 listarAdapter.updateData(empleats);
+
+                if (empleats.isEmpty()) {
+                    new AlertDialog.Builder(requireContext()).setTitle("\t\tNo hi ha dades")
+                            .setMessage("\t      ")
+                            .setMessage("\t      ")
+                            .setCancelable(true)
+                            .create()
+                            .show();
+                }
             }
         });
 
 
-
+    }
 /**
  * Aqui en este Observer el dato llega en forma de String, pero si el campo es Integer daba problemas
  * Entonces con un TRY/CATCH he diferenciado si el dato de entrada era String o Integer.
  */
-//        appViewModel.busqueda.observe(getViewLifecycleOwner(), new Observer<String[]>() {
-//            @Override
-//            public void onChanged(String[] busqueda) {
-//                RealmResults<Empleat> resultat;
-//                try{
-//                    int numero = Integer.parseInt(busqueda[0]);
-//                     resultat = realm.where(Empleat.class)
-//                            .equalTo(busqueda[1], numero)
-//                            .findAll();
-//                }catch (Exception e){
-//                    System.out.println("dade introduida un String");
-//                     resultat = realm.where(Empleat.class)
-//                            .equalTo(busqueda[1], busqueda[0])
-//                            .findAll();
-//                }
-//                if (resultat.isEmpty()){
-//                    new AlertDialog.Builder(requireContext()).setTitle("\t\tNo hi ha dades")
-//                            .setMessage("\t      ")
-//                            .setMessage("\t      ")
-//                            .setCancelable(true)
-//                            .create()
-//                            .show();
-//                }
-//                empleatsRecyclerView.setAdapter(new ListarAdapter(resultat, true));
-//            }
-//        });
-    }
+
 // ADAPTER
     public class ListarAdapter extends RealmRecyclerViewAdapter<Empleat, ListarAdapter.MyHolder> {
 
