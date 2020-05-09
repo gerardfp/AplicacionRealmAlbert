@@ -54,10 +54,6 @@ public class CercarFragment extends MyFragment {
         antiguetat = view.findViewById(R.id.antiguetatCerca);
         btCercar = view.findViewById(R.id.btnCerca);
 
-
-
-
-
         btCercar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,14 +78,8 @@ public class CercarFragment extends MyFragment {
                     }else appViewModel.dato.setValue(nom.getText().toString());
                 }else appViewModel.dato.setValue(id.getText().toString());
 
-
-
-
-
                 navController.navigate(R.id.listBusquedaFragment);
-
             }
         });
     }
-
 }

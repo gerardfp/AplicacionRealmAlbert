@@ -14,4 +14,6 @@ public class AppViewModel extends AndroidViewModel {
     public MutableLiveData<Boolean> modificar = new MutableLiveData<>(false);
     public MutableLiveData<Integer> idSeleccion = new MutableLiveData<>();
     public MutableLiveData<String> dato = new MutableLiveData<>();
+    public MutableLiveData<String> campBusqueda = new MutableLiveData<>();
+
 }

@@ -83,7 +83,7 @@ public class InsertarFragment extends MyFragment {
                     return;
                 }
                 writerDades(modificar, idSelecion);
-
+                System.out.println("..........................modificar ........................" + modificar);
                 navController.navigate(R.id.homeFragment);
             }
         });
@@ -141,7 +141,6 @@ public class InsertarFragment extends MyFragment {
                 valid = false;
             }
         }
-
         String antiguetat = antiguetatEditText.getText().toString();
         if (TextUtils.isEmpty(antiguetat)) {
             antiguetatEditText.setError("Required.");

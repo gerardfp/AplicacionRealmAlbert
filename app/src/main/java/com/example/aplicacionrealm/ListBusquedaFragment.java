@@ -26,12 +26,11 @@ import io.realm.RealmResults;
  * A simple {@link Fragment} subclass.
  */
 public class ListBusquedaFragment extends MyFragment {
-    private String dadeAbuscar;
-
     public ListBusquedaFragment() {
         // Required empty public constructor
     }
-
+    String camp="";
+    private String dato, campBusqueda ;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,26 +43,27 @@ public class ListBusquedaFragment extends MyFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        RecyclerView empleatsRecyclerView = view.findViewById(R.id.itemList2);
-
+        final RecyclerView empleatsRecyclerView = view.findViewById(R.id.itemList2);
         appViewModel.dato.observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                dadeAbuscar = s;
-                System.out.println("la ossssssssssssssssssssssssssssssssssss...........................................ssssssssssssssssssssss  " + s );
+                dato = s;
             }
         });
-        System.out.println("dades a buscar list Busqueda... .................................   "+ dadeAbuscar);
-
+        appViewModel.campBusqueda.observe(getViewLifecycleOwner(), new Observer<String>() {
+                    @Override
+                    public void onChanged(String camp) {
+                        campBusqueda = camp;
+                    }
+                });
+        //TODO campoBusqueda au no se le atribuye ningun valor en CercarFragment
+                System.out.println("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj  " + dato);
         RealmResults<Empleat> resultat = realm.where(Empleat.class)
-                .equalTo("nom", dadeAbuscar)
+                .equalTo(campBusqueda, dato)
                 .findAll();
-
-        System.out.println("resultatt: .............................................    "+ resultat.toString());
-
         empleatsRecyclerView.setAdapter(new ListarAdapter(resultat, true));
     }
+
     public class ListarAdapter extends RealmRecyclerViewAdapter<Empleat, ListarAdapter.MyHolder> {
 
         public ListarAdapter(@Nullable OrderedRealmCollection<Empleat> data, boolean autoUpdate) {
