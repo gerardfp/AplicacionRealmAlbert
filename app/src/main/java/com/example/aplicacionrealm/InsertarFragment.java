@@ -79,7 +79,7 @@ public class InsertarFragment extends MyFragment {
         btnInsertar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!validateForm(modificar)){
+                if (!validateForm()){
                     Toast.makeText(requireActivity(),"Falten dades per introduir!", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -110,7 +110,7 @@ public class InsertarFragment extends MyFragment {
         antiguetatEditText.setText(String.valueOf(empleat.getEdad()));
     }
 
-    private boolean validateForm(boolean modificar) {
+    private boolean validateForm() {
         boolean valid = true;
 
         String id = idEditText.getText().toString();
