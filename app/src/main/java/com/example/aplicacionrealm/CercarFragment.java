@@ -1,19 +1,17 @@
 package com.example.aplicacionrealm;
+
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.aplicacionrealm.Model.Empleat;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 
 public class CercarFragment extends MyFragment {
@@ -43,11 +41,6 @@ public class CercarFragment extends MyFragment {
             @Override
             public void onClick(View v) {
                 if (!validateForm()){
-                    Toast toast1 =
-                            Toast.makeText(requireActivity(),
-                                    "Faltan datos por introducir !", Toast.LENGTH_SHORT);
-                    toast1.setGravity(Gravity.CENTER | Gravity.LEFT, 250, 0);
-                    toast1.show();
                     return;
                 }
 
@@ -69,7 +62,7 @@ public class CercarFragment extends MyFragment {
         String idt = id.getText().toString();
         if (!TextUtils.isEmpty(idt) ) {
             try{
-                int num = Integer.parseInt(idt);
+                Integer.parseInt(idt);
             }catch (Exception e){
                 edad.setError("Solo números");
                 valid = false;
@@ -79,7 +72,7 @@ public class CercarFragment extends MyFragment {
         String edadt = edad.getText().toString();
         if (!TextUtils.isEmpty(edadt) ) {
             try{
-                int num = Integer.parseInt(edadt);
+                Integer.parseInt(edadt);
             }catch (Exception e){
                 edad.setError("Solo números");
                 valid = false;
@@ -88,7 +81,7 @@ public class CercarFragment extends MyFragment {
         String antiguetatt = antiguetat.getText().toString();
         if (!TextUtils.isEmpty(antiguetatt)) {
             try{
-                int num = Integer.parseInt(antiguetatt);
+                Integer.parseInt(antiguetatt);
             }catch (Exception e){
                 antiguetat.setError("Solo números");
                 valid = false;
