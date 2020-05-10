@@ -15,17 +15,9 @@
         android:name="com.example.aplicacionrealm.HomeFragment"
         android:label="               Pràctica amb Realm"
         tools:layout="@layout/fragment_home" />
-
-
     <fragment
-        android:id="@+id/modificarFragment"
-        android:name="com.example.aplicacionrealm.ModificarFragment"
-        android:label="               Pràctica amb Realm"
-        tools:layout="@layout/fragment_modificar" />
-
-    <fragment
-        android:id="@+id/empleat_List_Fragment"
-        android:name="com.example.aplicacionrealm.Empleat_List_Fragment"
+        android:id="@+id/empleatListFragment"
+        android:name="com.example.aplicacionrealm.EmpleatListFragment"
         android:label="               Pràctica amb Realm"
         tools:layout="@layout/fragment_empleat_list" />
     <fragment
@@ -33,11 +25,4 @@
         android:name="com.example.aplicacionrealm.CercarFragment"
         android:label="               Pràctica amb Realm"
         tools:layout="@layout/fragment_cercar" />
-    <fragment
-        android:id="@+id/listBusquedaFragment"
-        android:name="com.example.aplicacionrealm.ListBusquedaFragment"
-        android:label="fragment_list_busqueda"
-        tools:layout="@layout/fragment_list_busqueda" />
-   
-
 </navigation>
